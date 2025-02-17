@@ -1,39 +1,30 @@
-import os
-import pickle
-
-
 from seleniumbase import SB
-def loginYoutube():
+import main
+# https://github.com/seleniumbase/SeleniumBase/blob/9c1909e00731697b91ee6f2a53512e648878f13e/examples/cdp_mode/raw_easyjet.py#L36
+# note to check all the element types
+
+
+def youtubeFetch():
 
     with SB(uc=True, test=True, locale_code="en") as sb:
-        url = "youtube.com"
-        sb.activate_cdp_mode(url)
-        sb.uc_gui_click_captcha()
-
+        sb.activate_cdp_mode(main.url)
+        sb.open(main.url)
+        sb.load_cookies(name="saved_cookies/token.txt")
+        sb.open(main.url)
+       
+        #videos = sb.find_elements("style-scope ytd-rich-grid-renderer") 
+        elem_list = sb.find_elements("div.contents")
+        video = sb.find_elements("ytp-title-link yt-uix-sessionlink")
         
-        #On Linux, you can either set 'export SB_MAIL="string"' in your terminal for quick testing
-        #if used permanently then copy into your shell ./{shell}rc config! !
-        #Your IDE debugger might not find the environ, for that create a .env in this repo and add values there 
+        print(video)
+        print(elem_list)
+        # Find all elements with href containing "/watch?v="
+        watch_links = sb.driver.find_elements("//a[contains(@href, '/watch?v=')]")
 
-        email_input = os.environ.get("SB_MAIL") 
-        password_input = os.environ.get("SB_PW")
-
-        sb.uc_click('span:contains("Reject all")', reconnect_time=4)
-        sb.uc_click('span:contains("Sign in")', reconnect_time=4)
-        sb.press_keys("#identifierId",email_input)
-        sb.assert_element('#identifierId')
-        sb.uc_click('span:contains("Next")', reconnect_time=4)
-        sb.press_keys('input[aria-label="Enter your password"]', password_input)
-        sb.uc_click('span:contains("Next")', reconnect_time=4)
-        
-        print("debug")
-        sb.sleep(2)
-
-        sb.save_cookies(name="cookies.txt")
+def startUp():
+    youtubeFetch()
 
 
 
-
-loginYoutube()
 
 

@@ -1,15 +1,13 @@
 import os
-import pickle
+import main
 
 from seleniumbase import SB
-url = "youtube.com"
-
 
 def createToken():
 
     with SB(uc=True, test=True, locale_code="en") as sb:
         
-        sb.activate_cdp_mode(url)
+        sb.activate_cdp_mode(main.url)
         sb.uc_gui_click_captcha()
 
         
@@ -28,26 +26,11 @@ def createToken():
         sb.press_keys('input[aria-label="Enter your password"]', password_input)
         sb.uc_click('span:contains("Next")', reconnect_time=4)
         
-        print("debug")
         sb.sleep(2)
 
         sb.save_cookies(name="token.txt")
 
-def loginYoutube():
-    with SB(uc=True, test=True, locale_code="en") as sb:
-       sb.activate_cdp_mode(url)
-       sb.open(url)
-       sb.load_cookies(name="saved_cookies/token.txt")
-       sb.open(url)
-       print("test")
 
 
-
-
-def startUp():
-    if os.path.isfile("saved_cookies/token.txt"):
-        loginYoutube()
-    else:
-        createToken()
 
 
