@@ -1,6 +1,10 @@
 import os
+import pickle
+
+
 from seleniumbase import SB
 def loginYoutube():
+
     with SB(uc=True, test=True, locale_code="en") as sb:
         url = "youtube.com"
         sb.activate_cdp_mode(url)
@@ -24,26 +28,12 @@ def loginYoutube():
         
         print("debug")
         sb.sleep(2)
-        getVideos()
+
+        sb.save_cookies(name="cookies.txt")
+
+
+
 
 loginYoutube()
 
 
-def comment():
-    with SB(uc=True, test=True, locale_code="en") as sb:
-        sb.activate_cdp_mode(url)
-
-
-
-def getVideos(): #this part I copied from my old repo with selenium so it has to be updated for SeleniumBase
-    with SB(uc=True, test=True, locale_code="en") as sb:
-        videos = sb.find_elements(By.CLASS_NAME, "style-scope ytd-rich-grid-renderer") 
-        elem_list = sb.find_elements(By.ID, "contents")
-
-        video = sb.find_elements(By.CLASS_NAME, "ytp-title-link yt-uix-sessionlink")
-        
-        print(video)
-        print(elem_list)
-
-        # Find all elements with href containing "/watch?v="
-        watch_links = sb.driver.find_elements(By.XPATH, "//a[contains(@href, '/watch?v=')]")
