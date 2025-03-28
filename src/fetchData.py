@@ -1,7 +1,23 @@
 from seleniumbase import SB
-import main
 # https://github.com/seleniumbase/SeleniumBase/blob/9c1909e00731697b91ee6f2a53512e648878f13e/examples/cdp_mode/raw_easyjet.py#L36
 # note to check all the element types
+import main
+from invalidToken import invalidTokenCheck
+
+
+
+def invalidTokenCheck():
+    try:   
+        with open(file="saved_cookies/token.txt", mode = "r") as file:
+            assert file.read() != "[]" 
+            
+    except AssertionError as msg:
+        print("Token was saved falsely, please delete saved_cookies folder and run main.py again")
+        exit()
+
+
+    
+
 
 
 def youtubeFetch():
@@ -9,7 +25,13 @@ def youtubeFetch():
     with SB(uc=True, test=True, locale_code="en") as sb:
         sb.activate_cdp_mode(main.url)
         sb.open(main.url)
-        sb.load_cookies(name="saved_cookies/token.txt")
+        
+        invalidTokenCheck()
+        try:
+            sb.load_cookies(name="saved_cookies/token.txt")
+        except:
+            print("whoops")
+        
         sb.open(main.url)
        
         #videos = sb.find_elements("style-scope ytd-rich-grid-renderer") 

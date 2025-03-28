@@ -1,8 +1,7 @@
 import os
 import main
-
 from seleniumbase import SB
-
+import time
 def createToken():
 
     with SB(uc=True, test=True, locale_code="en") as sb:
@@ -17,8 +16,9 @@ def createToken():
 
         email_input = os.environ.get("SB_MAIL") 
         password_input = os.environ.get("SB_PW")
-
+        time.sleep(5)
         sb.uc_click('span:contains("Reject all")', reconnect_time=4)
+        time.sleep(5)
         sb.uc_click('span:contains("Sign in")', reconnect_time=4)
         sb.press_keys("#identifierId",email_input)
         sb.assert_element('#identifierId')
