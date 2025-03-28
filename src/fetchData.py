@@ -4,33 +4,17 @@ from seleniumbase import SB
 import main
 from invalidToken import invalidTokenCheck
 
-
-
-def invalidTokenCheck():
-    try:   
-        with open(file="saved_cookies/token.txt", mode = "r") as file:
-            assert file.read() != "[]" 
-            
-    except AssertionError as msg:
-        print("Token was saved falsely, please delete saved_cookies folder and run main.py again")
-        exit()
-
-
-    
-
-
-
 def youtubeFetch():
 
     with SB(uc=True, test=True, locale_code="en") as sb:
         sb.activate_cdp_mode(main.url)
         sb.open(main.url)
         
-        invalidTokenCheck()
-        try:
-            sb.load_cookies(name="saved_cookies/token.txt")
-        except:
-            print("whoops")
+        if invalidTokenCheck("saved_cookies/token.txt") == False:
+            exit()
+            
+        sb.load_cookies(name="saved_cookies/token.txt")
+        
         
         sb.open(main.url)
        
