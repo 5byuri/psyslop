@@ -13,8 +13,13 @@ with SB(uc=True, test=True, locale_code="en") as sb:
         sb.sleep(3)
         sb.slow_scroll_to_element('ytd-continuation-item-renderer')
         comment_elements = sb.find_elements('//yt-attributed-string[@id="content-text"]', by="xpath")
-        for element in comment_elements:
-            print(element.text)
+        try:
+            print(comment_elements[0].text)
+        except:
+            print("no comments, I guess")
+        sb.sleep(5)
+        # for element in comment_elements:
+        #     print(element.text)
 
         # comments_list = []
         # for video in comments_elements:
