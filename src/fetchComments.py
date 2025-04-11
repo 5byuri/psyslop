@@ -10,25 +10,19 @@ with SB(uc=True, test=True, locale_code="en") as sb:
     sb.load_cookies(name="saved_cookies/token.txt")
     for i in range(10):
         sb.activate_cdp_mode(array[i])
-
-        sb.sleep(6)
+        sb.sleep(3)
         sb.slow_scroll_to_element('ytd-continuation-item-renderer')
-        print("scrolled.")
-        sb.sleep(6)
-        # sb.uc_click('span:contains("Reject all")', reconnect_time=4)
-        # sb.scroll_to_bottom("div#icon-label")
-        # sb.scroll_to("#ghost-cards")
-        # sb.click("div#icon-label")
-        # sb.click("div#item-with-badge div")
-        # sb.sleep(30)
-        # print("timer start 6 seconds to scroll down")
-        # sb.click("div#icon-label")
-        # sb.click("div#item-with-badge div")
+        comment_elements = sb.find_elements('//yt-attributed-string[@id="content-text"]', by="xpath")
+        for element in comment_elements:
+            print(element.text)
+
+        # comments_list = []
+        # for video in comments_elements:
+        #     comment = sb.get_beautiful_soup(comments_elements.get_html()).text.strip()
+        #     print(comment)
+        #     comments_list.append(comment)
 
 
-        sb.sleep(5)
-        #sb.slow_scroll_to("div#icon-label")
-        # sb.slow_scroll_to_element("div#icon-label")
 
 
 
