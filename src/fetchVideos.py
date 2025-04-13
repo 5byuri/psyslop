@@ -4,7 +4,6 @@ from seleniumbase import SB
 import main
 from invalidToken import invalidTokenCheck
 
-
 def youtubeFetch():
 
     with SB(uc=True, test=True, locale_code="en") as sb:
@@ -16,8 +15,6 @@ def youtubeFetch():
         try:
             sb.sleep(3)
             sb.load_cookies(name="saved_cookies/token.txt")
-            with open(file="saved_cookies/token.txt", mode= "r") as file:
-                print(file.read())
         except NameError:
             print("did not work")
             sb.sleep(3)
