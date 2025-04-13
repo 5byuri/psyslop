@@ -3,22 +3,18 @@ from ollama import chat
 from ollama import ChatResponse
 
 comment_elements = getComments()
-print(comment_elements)
 ai_response = []
 
-def aiResponse():
+def aiResponse(comment_elements):
 
-    for i in range(5):
-        response: ChatResponse = chat(model='crAI-a3', messages=[
+    for i in len(comment_elements):
+        response: ChatResponse = chat(model='cria-a4-b3-02-critical', messages=[
         {
             'role': 'user',
             'content': f'{comment_elements[i].text}',
         },
         ])
-
-        # print(response['message']['content'])
-        # or access fields directly from the response object
         ai_response.append(response.message.content)
 
-    print (aiResponse())
+    print(ai_response)    
     return ai_response

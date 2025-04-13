@@ -1,15 +1,14 @@
 import session 
-import fetchData
+import fetchVideos
 import os
-
+from chatbot import aiResponse
 
 url = "youtube.com"
 
 if __name__ == "__main__":
 
     if os.path.isfile("saved_cookies/token.txt"):
-        fetchData.youtubeFetch()
+        fetchVideos.youtubeFetch()
     else:
         session.createToken()
-
-    
+    aiResponse()

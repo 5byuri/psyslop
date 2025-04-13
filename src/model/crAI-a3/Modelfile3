@@ -1,6 +1,6 @@
-FROM socialnetwooky/llama3.2-abliterated:1b_q4_k_m
+FROM mannix/llama3.1-8b-abliterated
 # set the temperature to 1 [higher is more creative, lower is more coherent]
-PARAMETER temperature 0.5
+PARAMETER temperature 0.2
 
 # set the system message
 SYSTEM """
