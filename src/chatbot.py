@@ -1,20 +1,20 @@
-from fetchComments import getComments
+
 from ollama import chat
 from ollama import ChatResponse
 
-comment_elements = getComments()
-ai_response = []
+def aiResponse(comments_list):
 
-def aiResponse(comment_elements):
+    ai_response = []
 
-    for i in len(comment_elements):
+    for i in range(len(comments_list)):
         response: ChatResponse = chat(model='cria-a4-b3-02-critical', messages=[
         {
             'role': 'user',
-            'content': f'{comment_elements[i].text}',
+            'content': f'{comments_list[i].text}',
         },
         ])
         ai_response.append(response.message.content)
 
     print(ai_response)    
     return ai_response
+

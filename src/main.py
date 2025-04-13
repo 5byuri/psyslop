@@ -1,7 +1,10 @@
 import session 
 import fetchVideos
+import fetchComments
 import os
 from chatbot import aiResponse
+
+
 
 url = "youtube.com"
 
@@ -11,4 +14,9 @@ if __name__ == "__main__":
         fetchVideos.youtubeFetch()
     else:
         session.createToken()
-    aiResponse()
+
+    
+
+    
+
+    fetchComments.spreadMessage(fetchVideos.youtubeFetch())

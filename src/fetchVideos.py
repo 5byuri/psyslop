@@ -4,6 +4,7 @@ from seleniumbase import SB
 import main
 from invalidToken import invalidTokenCheck
 
+
 def youtubeFetch():
 
     with SB(uc=True, test=True, locale_code="en") as sb:
@@ -28,8 +29,8 @@ def youtubeFetch():
 
         sb.get_element('#video-title')  # id="video-title"
 
-        for i in range(10):
-            sb.sleep(0.5)
+        for i in range(5):
+            sb.sleep(1)
             sb.scroll_to_bottom()
         video_elements = sb.find_elements('a#video-title-link')
         video_links = []
@@ -40,8 +41,6 @@ def youtubeFetch():
         return video_links
 
 
-def startUp():
-    youtubeFetch()
 
 
 
