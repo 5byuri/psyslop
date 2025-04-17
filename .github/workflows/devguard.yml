@@ -1,0 +1,14 @@
+# .github/workflows/devguard.yml
+name: DevGuard Workflow
+
+on:
+    push:
+
+jobs:
+    devguard-scanner:
+        uses: l3montree-dev/devguard-action/.github/workflows/full.yml@main
+        with:
+            asset-name: "psyslop/projects/psyslop/assets/psyslop"
+            api-url: https://api.main.devguard.org
+        secrets:
+            devguard-token: ${{ secrets.DEVGUARD_TOKEN }} 

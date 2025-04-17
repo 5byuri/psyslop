@@ -8,16 +8,16 @@ src/.venv
 latest_logs
 downloaded_files
 
-# Logs and generated files
+
 downloaded_files/
 latest_logs/
 
-# Python cache
-__pycache__/
+´__pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# OS files
+
 .DS_Store
 
+:q
