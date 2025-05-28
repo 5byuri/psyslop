@@ -19,8 +19,8 @@ def spreadMessage(video_links):
             comment_elements = sb.find_elements('//yt-attributed-string[@id="content-text"]', by="xpath")
             sb.uc_click('button[aria-label="Antworten"]')
             sb.press_keys('div#contenteditable-root', f"{chatbot.aiResponse(comment_elements)[0]}")
-            sb.uc_click('//*[@id="submit-button"]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]')
-        # sb.sleep(10)
+            sb.uc_click('//ytd-button-renderer[@id="submit-button"]')
+            sb.sleep(10)
 
 
         # for element in comment_elements:

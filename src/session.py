@@ -15,20 +15,23 @@ def createToken():
 
         email_input = os.environ.get("SB_MAIL") 
         password_input = os.environ.get("SB_PW")
-        # sb.sleep(5)
+        sb.sleep(5)
         sb.uc_click('span:contains("Reject all")', reconnect_time=4)
         sb.sleep(2)
         sb.uc_click('span:contains("Sign in")', reconnect_time=4)
+        sb.sleep(5)
 
         sb.press_keys("#identifierId",email_input)
         #TODO When an error happens, it should tell the user that he has to define a password with export=
 
         sb.assert_element('#identifierId')
+        sb.sleep(5)
 
         sb.uc_click('span:contains("Next")', reconnect_time=4)
         sb.press_keys('input[aria-label="Enter your password"]', password_input)
         sb.uc_click('span:contains("Next")', reconnect_time=4)
-        
+        sb.sleep(5)
+
         sb.sleep(2)
 
         sb.save_cookies(name="token.txt")
