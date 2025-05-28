@@ -35,8 +35,3 @@ def createToken():
         sb.sleep(2)
 
         sb.save_cookies(name="token.txt")
-
-
-
-
-

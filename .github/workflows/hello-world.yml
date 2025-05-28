@@ -1,0 +1,21 @@
+# .github/workflows/hello-world.yml
+name: Hello World
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      # (optional) Code aus dem Repo auschecken
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Hello‑World echo
+      - name: Echo Hello World
+        run: echo "Hello World"
