@@ -1,0 +1,29 @@
+fetchComments.py:22:SB
+--------------------------------------------------------------------
+Last Page: https://www.youtube.com/watch?v=zDsUlEQqCzY&t=2s
+ Duration: 99.54s
+  Browser: Chrome 130.0.6690.0
+   Driver: chromedriver 130.0.6723.116
+Timestamp: 1744701546  (Unix Timestamp)
+     Date: Tuesday, 15 April 2025
+     Time: 9:19:06 AM  (CEST, UTC+02:00)
+--------------------------------------------------------------------
+Traceback:
+  Traceback (most recent call last):
+  File "/home/venroy/Documents/git/github/byuri/projects/psyslop/src/fetchComments.py", line 22, in spreadMessage
+    sb.uc_click('//*[@id="submit-button"]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]')
+  File "/home/venroy/.local/lib/python3.10/site-packages/seleniumbase/core/browser_launcher.py", line 5327, in <lambda>
+    driver.uc_click = lambda *args, **kwargs: uc_click(
+  File "/home/venroy/.local/lib/python3.10/site-packages/seleniumbase/core/browser_launcher.py", line 810, in uc_click
+    element = driver.wait_for_element(selector, by=by, timeout=timeout)
+  File "/home/venroy/.local/lib/python3.10/site-packages/seleniumbase/core/sb_driver.py", line 124, in wait_for_element
+    return page_actions.wait_for_element(self.driver, *args, **kwargs)
+  File "/home/venroy/.local/lib/python3.10/site-packages/seleniumbase/fixtures/page_actions.py", line 1869, in wait_for_element
+    return wait_for_element_visible(
+  File "/home/venroy/.local/lib/python3.10/site-packages/seleniumbase/fixtures/page_actions.py", line 521, in wait_for_element_visible
+    timeout_exception(ElementNotVisibleException, message)
+  File "/home/venroy/.local/lib/python3.10/site-packages/seleniumbase/fixtures/page_actions.py", line 267, in timeout_exception
+    raise exc(msg)
+seleniumbase.common.exceptions.ElementNotVisibleException: Message: 
+ Element {//*[@id="submit-button"]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]} was not visible after 7 seconds!
+
