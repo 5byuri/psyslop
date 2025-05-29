@@ -2,19 +2,14 @@
 from ollama import chat
 from ollama import ChatResponse
 
-def aiResponse(comments_list):
+def aiResponse(comment: str):
 
-    ai_response = []
-
-    for i in range(len(comments_list)):
-        response: ChatResponse = chat(model='cria-a4-b3-02-critical', messages=[
+    response: ChatResponse = chat(model='cria-a4-b3-02-critical', messages=[
         {
             'role': 'user',
-            'content': f'{comments_list[i].text}',
+            'content': f'{comment}',
         },
-        ])
-        ai_response.append(response.message.content)
-
-    print(ai_response)    
-    return ai_response
+        ])    
+   
+    return response.message.content
 

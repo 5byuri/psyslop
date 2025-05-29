@@ -10,17 +10,25 @@ def spreadMessage(video_links):
         sb.open(main.url)
         sb.load_cookies(name="saved_cookies/token.txt") 
         print("cookie loaded")
-        comment_elements = []
-        for i in range(10):
-            sb.open(video_links[i])
-     
-            sb.sleep(3)
+        
+        for j in range(10): 
+            sb.open(video_links[j])     
             sb.slow_scroll_to_element('ytd-continuation-item-renderer')
             comment_elements = sb.find_elements('//yt-attributed-string[@id="content-text"]', by="xpath")
-            sb.uc_click('button[aria-label="Antworten"]')
-            sb.press_keys('div#contenteditable-root', f"{chatbot.aiResponse(comment_elements)[0]}")
-            sb.uc_click('//ytd-button-renderer[@id="submit-button"]')
-            sb.sleep(10)
+            replyElements = sb.find_elements('button[aria-label="Antworten"]')
+
+            for idx,element in enumerate(replyElements):
+                element.click()
+                
+            for i in range(10):
+                sb.sleep(3)
+                print(replyElements[i].id)
+                print("breakpoint")
+                sb.click(replyElements[i])
+                #sb.uc_click(f'button[@id="{replyElements[i].id}"]')
+                sb.press_keys('div#contenteditable-root', f"{chatbot.aiResponse(comment_elements[i].text)}")
+                #sb.uc_click('//ytd-button-renderer[@id="submit-button"]')
+                
         
 
         # for element in comment_elements:
