@@ -30,12 +30,12 @@ def youtubeFetch():
             sb.sleep(1)
             sb.scroll_to_bottom()
         video_elements = sb.find_elements('a#video-title-link')
-        video_links = []
+        video_links : list = []
         for video in video_elements:
             href = video.get_attribute("href")
             video_links.append(href)
 
-        return video_links
+        return video_links 
 
 
 
